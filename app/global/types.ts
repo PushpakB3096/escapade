@@ -1,4 +1,5 @@
 import { User } from '@prisma/client';
+import { IconType } from 'react-icons';
 
 export type NoOp = () => void;
 
@@ -11,3 +12,9 @@ export type SafeUser = Omit<
   updatedAt: string;
   emailVerified: string | null;
 };
+
+export interface CategoryType {
+  label: string;
+  description: string;
+  icon: IconType;
+}

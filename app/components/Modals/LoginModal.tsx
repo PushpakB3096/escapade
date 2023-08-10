@@ -10,7 +10,6 @@ import Heading from '../Heading';
 import Input from '../Inputs/Input';
 import { toast } from 'react-hot-toast';
 import Button from '../Button';
-import useRegisterModal from '@/app/hooks/useRegisterModal';
 import useLoginModal from '@/app/hooks/useLoginModal';
 import { useRouter } from 'next/navigation';
 
@@ -29,7 +28,6 @@ const LoginModal: React.FC<LoginModalProps> = ({}) => {
     }
   });
   const loginModal = useLoginModal();
-  const registerModal = useRegisterModal();
   const router = useRouter();
 
   const bodyContent = (
@@ -71,17 +69,6 @@ const LoginModal: React.FC<LoginModalProps> = ({}) => {
         icon={FcGoogle}
         onClick={() => signIn('google')}
       />
-      <div className='text-neutral-500 text-center mt-4 font-light'>
-        <div className='justify-center flex flex-row items-center gap-2'>
-          <div>Already have an account?</div>
-          <div
-            className='text-neutral-800 cursor-pointer hover:underline'
-            onClick={loginModal.onClose}
-          >
-            Login
-          </div>
-        </div>
-      </div>
     </div>
   );
 
