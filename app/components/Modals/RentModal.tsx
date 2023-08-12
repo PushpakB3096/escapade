@@ -6,11 +6,15 @@ import { useMemo, useState } from 'react';
 import Heading from '../Heading';
 import { categories } from '@/app/global/constants';
 import CategoryInput from '../Inputs/CategoryInput';
-import { FieldValues, useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import CountrySelect from '../Inputs/CountrySelect';
 import dynamic from 'next/dynamic';
 import Counter from '../Inputs/Counter';
 import ImageUpload from '../Inputs/ImageUpload';
+import Input from '../Inputs/Input';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 interface RentModalProps {}
 
@@ -27,13 +31,15 @@ const RentModal: React.FC<RentModalProps> = ({}) => {
   const [currentStep, setCurrentStep] = useState<STEPS_FOR_RENTING>(
     STEPS_FOR_RENTING.CATEGORY
   );
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const {
     register,
     handleSubmit,
     setValue,
     watch,
     formState: { errors },
-    reset
+    reset: resetForm
   } = useForm<FieldValues>({
     defaultValues: {
       categories: '',
@@ -42,12 +48,13 @@ const RentModal: React.FC<RentModalProps> = ({}) => {
       roomCount: 1,
       bathroomCount: 1,
       imageSrc: '',
-      price: 1,
+      price: 0,
       title: '',
       description: ''
     }
   });
   const rentModal = useRentModal();
+  const router = useRouter();
 
   const category = watch('category');
   const location = watch('location');
@@ -89,6 +96,31 @@ const RentModal: React.FC<RentModalProps> = ({}) => {
       }
       return val - 1;
     });
+  };
+
+  const onSubmit: SubmitHandler<FieldValues> = data => {
+    if (currentStep !== STEPS_FOR_RENTING.PRICE) {
+      onForward();
+      return;
+    }
+
+    setIsLoading(true);
+
+    axios
+      .post('/api/listings', data)
+      .then(() => {
+        toast.success('Listing created!');
+        // Reset the form when submission is done
+        resetForm();
+        setCurrentStep(STEPS_FOR_RENTING.CATEGORY);
+        router.refresh();
+      })
+      .catch(() => {
+        toast.error('Something went wrong.');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const actionLabel = useMemo(() => {
@@ -192,6 +224,57 @@ const RentModal: React.FC<RentModalProps> = ({}) => {
     );
   }
 
+  if (currentStep === STEPS_FOR_RENTING.DESCRIPTION) {
+    bodyContent = (
+      <div className='flex flex-col gap-8'>
+        <Heading
+          title='How would you describe your place?'
+          subtitle='Short and sweet works best!'
+          center
+        />
+        <Input
+          id='title'
+          label='Title'
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+        <hr />
+        <Input
+          id='description'
+          label='Description'
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+      </div>
+    );
+  }
+
+  if (currentStep === STEPS_FOR_RENTING.PRICE) {
+    bodyContent = (
+      <div className='flex flex-col gap-8'>
+        <Heading
+          title='Now set your price'
+          subtitle='How much do you charge per night?'
+          center
+        />
+        <Input
+          id='price'
+          label='Price'
+          type='number'
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+          formatPrice
+        />
+      </div>
+    );
+  }
+
   return (
     <Modal
       isOpen={rentModal.isOpen}
@@ -200,7 +283,7 @@ const RentModal: React.FC<RentModalProps> = ({}) => {
       secondaryAction={
         currentStep === STEPS_FOR_RENTING.CATEGORY ? undefined : onBack
       }
-      onSubmit={onForward}
+      onSubmit={handleSubmit(onSubmit)}
       title='AirBnb your home'
       onClose={rentModal.onClose}
       body={bodyContent}
