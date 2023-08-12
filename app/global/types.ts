@@ -18,3 +18,13 @@ export interface CategoryType {
   description: string;
   icon: IconType;
 }
+
+export type CountrySelectValue = {
+  flag: string;
+  label: string;
+  // TODO: this will be a tuple?
+  latlng: number[];
+  region: string;
+  value: string;
+};
+
