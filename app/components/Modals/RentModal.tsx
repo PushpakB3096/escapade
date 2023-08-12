@@ -4,11 +4,11 @@ import useRentModal from '@/app/hooks/useRentModal';
 import Modal from './Modal';
 import { useMemo, useState } from 'react';
 import Heading from '../Heading';
-import Categories from '../Navbar/Categories';
 import { categories } from '@/app/global/constants';
 import CategoryInput from '../Inputs/CategoryInput';
 import { FieldValues, useForm } from 'react-hook-form';
 import CountrySelect from '../Inputs/CountrySelect';
+import dynamic from 'next/dynamic';
 
 interface RentModalProps {}
 
@@ -49,6 +49,15 @@ const RentModal: React.FC<RentModalProps> = ({}) => {
 
   const category = watch('category');
   const location = watch('location');
+
+  // directly importing Map was causing issues with SSR sometimes
+  const Map = useMemo(
+    () =>
+      dynamic(() => import('../Map'), {
+        ssr: false
+      }),
+    [location]
+  );
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -124,6 +133,7 @@ const RentModal: React.FC<RentModalProps> = ({}) => {
           onChange={value => setCustomValue('location', value)}
           value={location}
         />
+        <Map center={location?.latlng} />
       </div>
     );
   }
