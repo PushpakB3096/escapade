@@ -1,4 +1,4 @@
-import { User } from '@prisma/client';
+import { Listing, User } from '@prisma/client';
 import { IconType } from 'react-icons';
 
 export type NoOp = () => void;
@@ -11,6 +11,11 @@ export type SafeUser = Omit<
   createdAt: string;
   updatedAt: string;
   emailVerified: string | null;
+};
+
+// for hydration issues
+export type SafeListing = Omit<Listing, 'createdAt'> & {
+  createdAt: string;
 };
 
 export interface CategoryType {
@@ -27,4 +32,3 @@ export type CountrySelectValue = {
   region: string;
   value: string;
 };
-
