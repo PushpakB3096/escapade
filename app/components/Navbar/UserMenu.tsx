@@ -40,7 +40,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     // Open rent modal
     rentModal.onOpen();
   }, [currentUser, loginModal, rentModal]);
-
+  
   return (
     <div className='relative'>
       <div className='flex flex-row items-center gap-3'>
@@ -70,8 +70,13 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   onClick={() => handleMenuAction(() => router.push('/trips'))}
                   label='My Trips'
                 />
-                <MenuItem onClick={() => {}} label='My Favourites' />
-                <MenuItem onClick={() => {}} label='My Reservations' />
+                <MenuItem onClick={() => handleMenuAction(() => router.push('/favorites'))} label='My Favorites' />
+                <MenuItem
+                  onClick={() =>
+                    handleMenuAction(() => router.push('/reservations'))
+                  }
+                  label='My Reservations'
+                />
                 <MenuItem onClick={() => {}} label='My Properties' />
                 {/* Adding this as "AirBnb My Home" button disappears in mobile view */}
                 <MenuItem onClick={onRent} label='AirBnb My Home' />
