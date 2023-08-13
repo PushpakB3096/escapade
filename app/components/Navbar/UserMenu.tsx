@@ -77,7 +77,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   }
                   label='My Reservations'
                 />
-                <MenuItem onClick={() => {}} label='My Properties' />
+                <MenuItem onClick={() => handleMenuAction(() => router.push('/properties'))} label='My Properties' />
                 {/* Adding this as "AirBnb My Home" button disappears in mobile view */}
                 <MenuItem onClick={onRent} label='AirBnb My Home' />
                 <hr />

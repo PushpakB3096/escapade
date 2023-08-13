@@ -1,14 +1,18 @@
 import { Listing } from '@prisma/client';
 import getCurrentUser from './actions/getCurrentUser';
-import getListings from './actions/getListings';
+import getListings, { IListingParams } from './actions/getListings';
 import ClientWrapper from './components/ClientWrapper';
 import Container from './components/Container';
 import EmptyState from './components/EmptyState';
 import ListingCard from './components/Listings/ListingCard';
 import { SafeListing } from './global/types';
 
-export default async function Home() {
-  const listings = await getListings();
+interface HomeProps {
+  searchParams: IListingParams;
+}
+
+const Home: React.FC<HomeProps> = async ({ searchParams }) => {
+  const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
   if (listings.length === 0) {
@@ -34,4 +38,6 @@ export default async function Home() {
       </Container>
     </ClientWrapper>
   );
-}
+};
+
+export default Home;
