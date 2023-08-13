@@ -15,17 +15,9 @@ import Input from '../Inputs/Input';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { STEPS_FOR_RENTING } from '@/app/global/types';
 
 interface RentModalProps {}
-
-enum STEPS_FOR_RENTING {
-  CATEGORY = 0,
-  LOCATION = 1,
-  INFO = 2,
-  IMAGES = 3,
-  DESCRIPTION = 4,
-  PRICE = 5
-}
 
 const RentModal: React.FC<RentModalProps> = ({}) => {
   const [currentStep, setCurrentStep] = useState<STEPS_FOR_RENTING>(

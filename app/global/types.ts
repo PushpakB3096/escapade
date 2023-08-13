@@ -43,3 +43,18 @@ export type CountrySelectValue = {
   region: string;
   value: string;
 };
+
+export enum STEPS_FOR_RENTING {
+  CATEGORY = 0,
+  LOCATION = 1,
+  INFO = 2,
+  IMAGES = 3,
+  DESCRIPTION = 4,
+  PRICE = 5
+}
+
+export enum STEPS_FOR_SEARCH {
+  LOCATION = 0,
+  DATE = 1,
+  INFO = 2
+}

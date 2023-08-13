@@ -8,6 +8,7 @@ import ToasterProvider from './providers/ToasterProvider';
 import LoginModal from './components/Modals/LoginModal';
 import getCurrentUser from './actions/getCurrentUser';
 import RentModal from './components/Modals/RentModal';
+import SearchModal from './components/Modals/SearchModal';
 
 export const metadata: Metadata = {
   title: 'Escapade',
@@ -33,6 +34,7 @@ export default async function RootLayout({
           <RegisterModal />
           <LoginModal />
           <RentModal />
+          <SearchModal />
           <Navbar currentUser={currentUser} />
         </ClientWrapper>
         <div className='pb-20 pt-28'>{children}</div>
