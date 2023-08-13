@@ -1,4 +1,4 @@
-import { Listing, User } from '@prisma/client';
+import { Listing, Reservation, User } from '@prisma/client';
 import { IconType } from 'react-icons';
 
 export type NoOp = () => void;
@@ -16,6 +16,17 @@ export type SafeUser = Omit<
 // for hydration issues
 export type SafeListing = Omit<Listing, 'createdAt'> & {
   createdAt: string;
+};
+
+// for hydration issues
+export type SafeReservation = Omit<
+  Reservation,
+  'createdAt' | 'startDate' | 'endDate' | 'listing'
+> & {
+  createdAt: string;
+  startDate: string;
+  endDate: string;
+  listing: SafeListing;
 };
 
 export interface CategoryType {

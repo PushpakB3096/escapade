@@ -5,9 +5,8 @@ import ListingHead from '@/app/components/Listings/ListingHead';
 import ListingInfo from '@/app/components/Listings/ListingInfo';
 import ListingReservation from '@/app/components/Listings/ListingReservation';
 import { categories, initialDateRange } from '@/app/global/constants';
-import { SafeListing, SafeUser } from '@/app/global/types';
+import { SafeListing, SafeReservation, SafeUser } from '@/app/global/types';
 import useLoginModal from '@/app/hooks/useLoginModal';
-import { Reservation } from '@prisma/client';
 import axios from 'axios';
 import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns';
 import { useRouter } from 'next/navigation';
@@ -19,7 +18,7 @@ interface ListingClientProps {
   listing: SafeListing & {
     user: SafeUser;
   };
-  reservation?: Reservation[];
+  reservation?: SafeReservation[];
   currentUser?: SafeUser | null;
 }
 
