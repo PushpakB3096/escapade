@@ -48,7 +48,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           className='hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer'
           onClick={onRent}
         >
-          AirBnb Your Home
+          Rent Your Property
         </div>
         <div
           className='p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition'
@@ -78,8 +78,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   label='My Reservations'
                 />
                 <MenuItem onClick={() => handleMenuAction(() => router.push('/properties'))} label='My Properties' />
-                {/* Adding this as "AirBnb My Home" button disappears in mobile view */}
-                <MenuItem onClick={onRent} label='AirBnb My Home' />
+                {/* Adding this as "Rent Your Property" button disappears in mobile view */}
+                <MenuItem onClick={onRent} label='Rent Your Property' />
                 <hr />
                 <MenuItem
                   onClick={() => handleMenuAction(signOut)}

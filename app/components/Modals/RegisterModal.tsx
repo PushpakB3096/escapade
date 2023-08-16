@@ -39,7 +39,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({}) => {
 
   const bodyContent = (
     <div className='flex flex-col gap-4'>
-      <Heading title='Welcome to AirBnB' subtitle='Create an account' center />
+      <Heading title='Welcome to Escapade' subtitle='Create an account' center />
 
       <Input
         id='email'

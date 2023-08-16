@@ -25,13 +25,13 @@ const CategoryInput: React.FC<CategoryInputProps> = ({
     flex
     flex-col
     gap-3
-    hover:border-black
+    hover:border-[#1D1E18]
     cursor-pointer
     transition
-    ${selected ? 'border-black' : 'border-neutral-200'}
+    ${selected ? 'border-[#1D1E18]' : 'border-neutral-200'}
   `}
     >
-      <Icon size={30} />
+      <Icon size={30} color='#1D1E18'/>
       <div className='font-semibold'>{label}</div>
     </div>
   );

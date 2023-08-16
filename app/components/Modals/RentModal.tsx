@@ -276,7 +276,7 @@ const RentModal: React.FC<RentModalProps> = ({}) => {
         currentStep === STEPS_FOR_RENTING.CATEGORY ? undefined : onBack
       }
       onSubmit={handleSubmit(onSubmit)}
-      title='AirBnb your home'
+      title='Rent your property'
       onClose={rentModal.onClose}
       body={bodyContent}
     />
