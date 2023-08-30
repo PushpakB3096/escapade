@@ -9,6 +9,9 @@ import LoginModal from './components/Modals/LoginModal';
 import getCurrentUser from './actions/getCurrentUser';
 import RentModal from './components/Modals/RentModal';
 import SearchModal from './components/Modals/SearchModal';
+import '@testing-library/jest-dom';
+
+
 
 export const metadata: Metadata = {
   title: 'Escapade',
