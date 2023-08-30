@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import Logo from '../Navbar/Logo';
 import { useRouter } from 'next/navigation';
@@ -29,7 +29,8 @@ describe('Logo component', () => {
 
     await user.click(logoElement);
 
-    // TODO: figure out why this is not being called
-    expect(useRouter().push).toHaveBeenCalledTimes(0);
+    waitFor(() => {
+      expect(useRouter().push).toHaveBeenCalledTimes(1);
+    });
   });
 });

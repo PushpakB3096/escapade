@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import EmptyState from '../EmptyState';
 import { useRouter } from 'next/navigation';
@@ -65,7 +65,8 @@ describe('EmptyState component', () => {
 
     await user.click(buttonElement);
 
-    // TODO: figure out why this is not being called
-    expect(useRouter().push).toHaveBeenCalledTimes(0);
+    waitFor(() => {
+      expect(useRouter().push).toHaveBeenCalledTimes(1);
+    });
   });
 });

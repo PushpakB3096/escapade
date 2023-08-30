@@ -38,8 +38,7 @@ export interface CategoryType {
 export type CountrySelectValue = {
   flag: string;
   label: string;
-  // TODO: this will be a tuple?
-  latlng: number[];
+  latlng: [number, number];
   region: string;
   value: string;
 };
