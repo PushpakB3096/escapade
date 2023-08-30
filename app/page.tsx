@@ -6,6 +6,8 @@ import Container from './components/Container';
 import EmptyState from './components/EmptyState';
 import ListingCard from './components/Listings/ListingCard';
 import { SafeListing } from './global/types';
+import '@testing-library/jest-dom';
+
 
 interface HomeProps {
   searchParams: IListingParams;
