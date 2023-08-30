@@ -6,6 +6,13 @@ const nextConfig = {
       'lh3.googleusercontent.com',
       'res.cloudinary.com'
     ]
+  },
+  webpack: (config, { webpack }) => {
+    config.plugins.push(
+      new webpack.IgnorePlugin({ resourceRegExp: /\/__tests__\// }),
+      new webpack.IgnorePlugin({ resourceRegExp: /\/test\// })
+    );
+    return config;
   }
 };
 

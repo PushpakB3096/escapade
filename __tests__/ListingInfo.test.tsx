@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
-import ListingInfo from '../Listings/ListingInfo';
+import ListingInfo from '../app/components/Listings/ListingInfo';
 
 describe('ListingInfo component', () => {
   test('renders by default', () => {

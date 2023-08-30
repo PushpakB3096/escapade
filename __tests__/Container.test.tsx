@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Container from '../Container';
-import Button from '../Button';
+import Container from '../app/components/Container';
+import Button from '../app/components/Button';
 
 describe('Container component', () => {
   test('child renders', () => {

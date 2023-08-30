@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import MenuItem from '../Navbar/MenuItem';
+import MenuItem from '../app/components/Navbar/MenuItem';
 
 describe('MenuItem component', () => {
   const labelText = 'Menu Item';

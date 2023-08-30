@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Input from '../Inputs/Input';
+import Input from '../app/components/Inputs/Input';
 
 describe('Input component', () => {
   test('renders by default', () => {

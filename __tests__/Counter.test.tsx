@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { render, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import Counter from '../Inputs/Counter';
+import Counter from '../app/components/Inputs/Counter';
 
 describe('Counter component', () => {
   const title = 'This is a test title';

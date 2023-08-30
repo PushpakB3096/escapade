@@ -9,7 +9,7 @@ const createJestConfig = nextJest({
 /** @type {import('jest').Config} */
 const config = {
   // Add more setup options before each test is run
-  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/test/setupTests.ts'],
   testEnvironment: 'jest-environment-jsdom',
   coverageThreshold: {
     global: {

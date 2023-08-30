@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import Modal from '../Modals/Modal';
+import Modal from '../app/components/Modals/Modal';
 
 describe('Modal component', () => {
   test('renders by default', () => {

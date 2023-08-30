@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Button from '../Button';
-import ClientWrapper from '../ClientWrapper';
+import Button from '../app/components/Button';
+import ClientWrapper from '../app/components/ClientWrapper';
 
 describe('ClientWrapper component', () => {
   test('child renders', () => {

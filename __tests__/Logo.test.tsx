@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import Logo from '../Navbar/Logo';
+import Logo from '../app/components/Navbar/Logo';
 import { useRouter } from 'next/navigation';
 
 jest.mock('next/navigation', () => ({
