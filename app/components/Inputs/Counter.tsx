@@ -16,16 +16,16 @@ const Counter: React.FC<CounterProps> = ({
   title,
   value
 }) => {
-  const onAdd = useCallback(() => {
+  const onAdd = () => {
     onChange(value + 1);
-  }, [value, onChange]);
+  };
 
-  const onReduce = useCallback(() => {
+  const onReduce = () => {
     if (value === 1) {
       return;
     }
     onChange(value - 1);
-  }, [value, onChange]);
+  };
 
   return (
     <div className='flex flex-row items-center justify-between'>
@@ -37,17 +37,24 @@ const Counter: React.FC<CounterProps> = ({
         <div
           className='w-10 h-10 rounded-full border-[1px] border-neutral-400 flex items-center justify-center cursor-pointer transition hover:opacity-80'
           onClick={onReduce}
+          data-testid='decrement-btn'
         >
           <AiOutlineMinus />
         </div>
-        <div className="
+        <div
+          data-testid='value-elem'
+          className='
             font-light 
             text-xl 
             text-neutral-600
-          ">{value}</div>
+          '
+        >
+          {value}
+        </div>
         <div
           className='w-10 h-10 rounded-full border-[1px] border-neutral-400 flex items-center justify-center cursor-pointer transition hover:opacity-80'
           onClick={onAdd}
+          data-testid='increment-btn'
         >
           <AiOutlinePlus />
         </div>
