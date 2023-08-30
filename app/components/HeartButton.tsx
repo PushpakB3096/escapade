@@ -1,9 +1,9 @@
 'use client';
 
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { ClipLoader } from 'react-spinners';
 import { SafeUser } from '../global/types';
 import useFavorite from '../hooks/useFavorite';
-import { MoonLoader } from 'react-spinners';
 
 interface HeartButtonProps {
   listingId: string;
@@ -25,7 +25,7 @@ const HeartButton: React.FC<HeartButtonProps> = ({
       className='relative hover:opacity-80 transition cursor-pointer'
     >
       {isLoading ? (
-        <MoonLoader className='fill-white absolute -top-[2px] -right-[2px]' />
+        <ClipLoader size={20} color='white' />
       ) : (
         <>
           <AiOutlineHeart
