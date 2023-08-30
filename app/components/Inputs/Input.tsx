@@ -10,8 +10,8 @@ interface InputProps {
   disabled?: boolean;
   formatPrice?: boolean;
   required?: boolean;
-  register: UseFormRegister<FieldValues>;
-  errors: FieldErrors;
+  register?: UseFormRegister<FieldValues>;
+  errors?: FieldErrors;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -24,6 +24,7 @@ const Input: React.FC<InputProps> = ({
   required,
   type = 'text'
 }) => {
+  console.log(1111, { errors });
   return (
     <div className='w-full relative'>
       {formatPrice && (
@@ -50,14 +51,15 @@ const Input: React.FC<InputProps> = ({
             disabled:opacity-70
             disabled:cursor-not-allowed
             ${formatPrice ? 'pl-9' : 'pl-4'}
-            ${errors[id] ? 'border-rose-500' : 'border-neutral-300'}
-            ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black'}
+            ${errors?.[id] ? 'border-rose-500' : 'border-neutral-300'}
+            ${errors?.[id] ? 'focus:border-rose-500' : 'focus:border-black'}
         `}
-        {...register(id, {
+        {...register?.(id, {
           required
         })}
       />
       <label
+        htmlFor={id}
         className={`
         absolute
         text-md
@@ -72,7 +74,7 @@ const Input: React.FC<InputProps> = ({
         peer-focus:scale-75
         peer-focus:-translate-y-4
         ${formatPrice ? 'left-9' : 'left-4'}
-        ${errors[id] ? 'text-rose-500' : 'text-zinc-400'}
+        ${errors?.[id] ? 'text-rose-500' : 'text-zinc-400'}
       `}
       >
         {label}
