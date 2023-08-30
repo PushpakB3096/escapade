@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Button from '../app/components/Button';
+import Button from '../Button';
 
 describe('Button component', () => {
   test('default button renders', () => {
     const onClickMock = jest.fn();
-    const { getByText,  } = render(
+    const { getByText } = render(
       <Button label='Click me' onClick={onClickMock} />
     );
 

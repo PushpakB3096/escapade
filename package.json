@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage --watchAll --collectCoverageFrom='app/components/**/*.{ts,tsx}' --collectCoverageFrom='!app/components/**/*.{types,stories,constants,test,spec}.{ts,tsx}'"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
