@@ -11,14 +11,15 @@ jest.mock('next/navigation', () => ({
   })
 }));
 
-describe('Counter component', () => {
-  test('renders by default', async () => {
+describe('Logo component', () => {
+  test('renders by default', () => {
     user.setup();
     const { getByRole } = render(<Logo />);
 
     const logoElement = getByRole('img');
     expect(logoElement).toBeInTheDocument();
   });
+
   test('navigates to home when clicked', async () => {
     user.setup();
     const { getByRole } = render(<Logo />);
