@@ -1,8 +1,9 @@
 'use client';
 
-import { AiFillHeart, AiOutlineHeart, AiOutlineLoading } from 'react-icons/ai';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { SafeUser } from '../global/types';
 import useFavorite from '../hooks/useFavorite';
+import { MoonLoader } from 'react-spinners';
 
 interface HeartButtonProps {
   listingId: string;
@@ -23,12 +24,8 @@ const HeartButton: React.FC<HeartButtonProps> = ({
       onClick={toggleFavorite}
       className='relative hover:opacity-80 transition cursor-pointer'
     >
-      {/* TODO: Spinner is not spinning */}
       {isLoading ? (
-        <AiOutlineLoading
-          size={28}
-          className='fill-white absolute -top-[2px] -right-[2px]'
-        />
+        <MoonLoader className='fill-white absolute -top-[2px] -right-[2px]' />
       ) : (
         <>
           <AiOutlineHeart
