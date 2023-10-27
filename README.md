@@ -2,6 +2,10 @@
 
 Welcome to Escapade! This project is built using a powerful tech stack to provide a comprehensive and user-friendly platform for property reservations and management. Whether you're a traveler looking for the perfect accommodation or a property owner wanting to list your space, this application has got you covered.
 
+![image](https://github.com/PushpakB3096/escapade/assets/44138832/d52a4bf3-69bd-4cf1-b5fc-6365561fd862)
+
+![image](https://github.com/PushpakB3096/escapade/assets/44138832/671b67e2-cfd8-40fd-bf82-80b2869c2f2b)
+
 ## Tech Stack
 
 - React + TypeScript: The frontend is developed using React with TypeScript, providing a robust and type-safe user interface.
